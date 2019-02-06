@@ -1,0 +1,27 @@
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.data-table th{
+    background-color: darkcyan;
+    color: white;
+}
+
+.data-table td, .data-table th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.data-table tr {
+    text-align: center;
+    background-color: white;
+}
+
+.data-table tr:hover {
+    background-color: aliceblue;
+}
+
+.data-table input {
+    text-align: center;
+}
