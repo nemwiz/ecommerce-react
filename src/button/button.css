@@ -1,0 +1,60 @@
+.button-purple {
+    border: none;
+    background-color: #5666a5;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0 30px;
+    display: inline-block;
+    margin: 15px 10px;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-weight: 400;
+    font-size: 0.8em;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 23px;
+    letter-spacing: 2px;
+    -webkit-transform: translateZ(0);
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.button-purple:before {
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: inherit;
+    background-color: #ffffff;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.button-purple:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 5px solid #5666a5;
+    content: '';
+    border-radius: inherit;
+}
+
+.button-purple:hover {
+    background-color: #5666a5;
+    color: #ffffff;
+}
+.button-purple:hover:before {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    opacity: 0.25;
+}

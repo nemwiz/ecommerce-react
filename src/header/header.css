@@ -1,0 +1,16 @@
+header {
+    background-color: coral;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 1.3em;
+    font-weight: bold;
+    margin: 0 0 1.3em 0;
+}
+
+.menu {
+    margin-top: 1em;
+}
