@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 
 interface IButton {
     label: string;
-    route: string;
+    route?: string;
+    clickFunction?: () => void;
 }
 
 export default class Button extends Component<IButton> {
@@ -14,8 +15,14 @@ export default class Button extends Component<IButton> {
     }
 
     render() {
-        return <Link to={this.props.route}>
-            <button className="button-purple">{this.props.label}</button>
-        </Link>
+        if (this.props.route) {
+            return (
+                <Link to={this.props.route}>
+                    <button className="button-purple">{this.props.label}</button>
+                </Link>
+            )
+        } else {
+            return <button className="button-purple" onClick={this.props.clickFunction}>{this.props.label}</button>
+        }
     }
 }
