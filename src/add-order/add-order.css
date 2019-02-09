@@ -1,0 +1,10 @@
+.items {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.items-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

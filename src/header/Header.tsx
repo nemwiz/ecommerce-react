@@ -10,8 +10,8 @@ export default class Header extends Component {
                 <div>E commerce app</div>
                 <div className={'menu'}>
                     <Button label={'All orders'} route={'/orders'}/>
-                    <Button label={'Add new order'} route={'order-new'}/>
-                    <Button label={'Invoices'} route={'invoices'}/>
+                    <Button label={'Add new order'} route={'/order-new'}/>
+                    <Button label={'Invoices'} route={'/invoices'}/>
                 </div>
             </header>
         )

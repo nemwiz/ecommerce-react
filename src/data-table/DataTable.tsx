@@ -6,7 +6,7 @@ interface DataTableProps {
     headers: string[];
     data: object[];
     showAddButtonAndQty?: boolean;
-    addItemFunction?: () => void;
+    addItemFunction?: any;
 }
 
 export default class DataTable extends Component<DataTableProps> {
@@ -24,7 +24,6 @@ export default class DataTable extends Component<DataTableProps> {
                         {this.props.headers.map((header: string, index: number) => (
                             <th key={index}>{header}</th>
                         ))}
-                        {this.props.showAddButtonAndQty ? <th>ItemQty</th> : null}
                         {this.props.showAddButtonAndQty ? <th>Add</th> : null}
                     </tr>
                     {this.props.data.map((item: any, index: number) => (
@@ -33,10 +32,8 @@ export default class DataTable extends Component<DataTableProps> {
                                 <td key={index}>{item[key]}</td>
                             ))}
 
-                            {this.props.showAddButtonAndQty ? <td>hello</td> : null}
-
                             {this.props.showAddButtonAndQty ?
-                                <td><Button label={"Add item"} clickFunction={this.props.addItemFunction}/></td> : null}
+                                <td><Button label={"Add item"} clickFunction={this.props.addItemFunction.bind(this, item)}/></td> : null}
 
                         </tr>
                     ))}
