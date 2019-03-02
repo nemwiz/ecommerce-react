@@ -1,39 +1,33 @@
-import {Component} from "react";
-import React from "react";
-import {Order} from "../domain/order";
-import OrdersService from "../services/orders.service";
-import DataTable from "../data-table/DataTable";
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { Order } from '../domain/order';
+import OrdersService from '../services/orders.service';
+import { DataTable } from '../data-table/DataTable';
 
-interface OrdersState {
-    orders: Order[];
-}
+export const Orders: FunctionComponent = () => {
+	const [orders, setOrders] = useState<Order[]>([]);
 
-export default class Orders extends Component<object, OrdersState> {
+	useEffect(() => {
+		OrdersService.getOrders().then((orders: Order[]) => {
+			setOrders(orders);
+		});
+	}, []);
 
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            orders: []
-        };
-    }
-
-    render() {
-        if (this.state.orders.length === 0) {
-            return <div>Loading...</div>
-        } else {
-            return (
-                <DataTable headers={Object.keys(this.state.orders[0])} data={this.state.orders}/>
-            )
-        }
-    }
-
-    componentDidMount(): void {
-        OrdersService.getOrders().then((orders: Order[]) => {
-                this.setState({
-                    orders: orders
-                });
-            }
-        )
-
-    }
-}
+	if (orders.length === 0) {
+		return <div>Loading...</div>;
+	} else {
+		return (
+			<DataTable headers={Object.keys(orders[0])}>
+				{orders.map(order => (
+					<tr key={order.orderNumber}>
+						<td>{order.orderNumber}</td>
+						<td>{order.buyerName}</td>
+						<td>{order.sellerName}</td>
+						<td>{order.storeName}</td>
+						<td>{order.totalAmount}</td>
+						<td>{order.orderStatus}</td>
+					</tr>
+				))}
+			</DataTable>
+		);
+	}
+};
