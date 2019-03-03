@@ -1,28 +1,27 @@
-import React, {Component} from 'react';
-import './button.css'
-import {Link} from "react-router-dom";
+import React, { FunctionComponent } from 'react';
+import './button.css';
+import { Link } from 'react-router-dom';
 
-interface IButton {
-    label: string;
-    route?: string;
-    clickFunction?: () => void;
+interface ButtonProps {
+	label: string;
+	route?: string;
+	clickFunction?: () => void;
 }
 
-export default class Button extends Component<IButton> {
+const Button: FunctionComponent<ButtonProps> = props => {
+	if (props.route) {
+		return (
+			<Link to={props.route}>
+				<button className="button-purple">{props.label}</button>
+			</Link>
+		);
+	} else {
+		return (
+			<button className="button-purple" onClick={props.clickFunction}>
+				{props.label}
+			</button>
+		);
+	}
+};
 
-    constructor(props: IButton) {
-        super(props);
-    }
-
-    render() {
-        if (this.props.route) {
-            return (
-                <Link to={this.props.route}>
-                    <button className="button-purple">{this.props.label}</button>
-                </Link>
-            )
-        } else {
-            return <button className="button-purple" onClick={this.props.clickFunction}>{this.props.label}</button>
-        }
-    }
-}
+export default Button;

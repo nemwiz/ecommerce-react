@@ -1,19 +1,20 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Order } from '../domain/order';
-import OrdersService from '../services/orders.service';
-import { DataTable } from '../data-table/DataTable';
+import { OrdersService } from '../services/orders.service';
+import DataTable from '../data-table/DataTable';
 
-export const Orders: FunctionComponent = () => {
+const Orders: FunctionComponent = () => {
 	const [orders, setOrders] = useState<Order[]>([]);
+	const ordersService = new OrdersService();
 
 	useEffect(() => {
-		OrdersService.getOrders().then((orders: Order[]) => {
+		ordersService.getOrders().then((orders: Order[]) => {
 			setOrders(orders);
 		});
 	}, []);
 
 	if (orders.length === 0) {
-		return <div>Loading...</div>;
+		return <div className={'loader'} />;
 	} else {
 		return (
 			<DataTable headers={Object.keys(orders[0])}>
@@ -31,3 +32,5 @@ export const Orders: FunctionComponent = () => {
 		);
 	}
 };
+
+export default Orders;

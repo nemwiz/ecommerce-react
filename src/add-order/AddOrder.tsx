@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { DataTable } from '../data-table/DataTable';
+import DataTable from '../data-table/DataTable';
 import { Item } from '../domain/item';
 import './add-order.css';
 import Button from '../button/Button';
@@ -12,7 +12,7 @@ interface OrderState {
 	storeName: string;
 }
 
-export const AddOrder: FunctionComponent = () => {
+const AddOrder: FunctionComponent = () => {
 	const [order, addOrder] = useState<OrderState>({
 		items: [],
 		sellerName: '',
@@ -20,9 +20,7 @@ export const AddOrder: FunctionComponent = () => {
 		storeName: ''
 	});
 	const [selectedItem, selectItem] = useState<Item>();
-	const [allItems, updateAllItems] = useState<Dictionary<Item>>(
-		getStoreItems()
-	);
+	const [allItems, updateAllItems] = useState<Dictionary<Item>>(getStoreItems());
 
 	useEffect(() => {
 		const updatedItems: Dictionary<Item> = {};
@@ -65,6 +63,8 @@ export const AddOrder: FunctionComponent = () => {
 		</div>
 	);
 };
+
+export default AddOrder;
 
 const getStoreItems = (): Dictionary<Item> => {
 	const items = [

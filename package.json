@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
@@ -10,6 +11,7 @@
     "typescript": "^3.3.3333"
   },
   "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,12 +45,13 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --use-tabs --write",
+      "prettier --single-quote --use-tabs --print-width 100 --write",
       "git add"
     ]
   },
   "prettier": {
     "singleQuote": true,
-    "useTabs": true
+    "useTabs": true,
+    "printWidth": 100
   }
 }

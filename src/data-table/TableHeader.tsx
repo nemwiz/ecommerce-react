@@ -5,9 +5,7 @@ interface TableHeaderProps {
 	headers: string[];
 }
 
-export const TableHeader: FunctionComponent<TableHeaderProps> = (
-	props: TableHeaderProps
-) => {
+const TableHeader: FunctionComponent<TableHeaderProps> = (props: TableHeaderProps) => {
 	return (
 		<Fragment>
 			<tr>
@@ -18,3 +16,5 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = (
 		</Fragment>
 	);
 };
+
+export default TableHeader;
